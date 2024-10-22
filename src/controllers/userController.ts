@@ -7,10 +7,12 @@ import { prisma } from "../prismaClient.js";
 
 export const getUserCreate = async (req: Request, res: Response) => {
   try {
-    const data = await registerUser(req, res);
-    res.json(data);
+    console.log('entered here')
+    await registerUser(req, res);
+    // return res.json(data);
   } catch (error) {
-    res.status(500).json({ message: "Error fetching data" });
+    console.error(error);
+    return res.status(500).json({ message: "Error fetching data" });
   }
 };
 
